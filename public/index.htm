@@ -1,0 +1,38 @@
+<html>
+<head>
+    <script type='text/javascript' src='/knockout/build/output/knockout-latest.js'></script>
+    <script type='text/javascript' src='/jquery/dist/jquery.min.js'></script>
+    <script type='text/javascript' src='/underscore/underscore-min.js'></script>
+    <script type='text/javascript' src='sammy-latest.min.js'></script>
+</head>
+<body>
+    <h1>A photo blog for Jon</h1>
+
+    <ul class="categories" data-bind="foreach: categories">
+        <li data-bind="text: $data, click: $root.goToTag"></li>
+    </ul>
+
+    <div id="posts">
+        <div data-bind='foreach: choosenPosts'>
+            <h3><div data-bind='text: title'></div></h3>
+            <div data-bind='text: body'></div>
+            <b data-bind="click: $parent.editPost">edit</b>
+        </div>
+    </div>
+
+    <div id="edit">
+        <h3>Edit</h3>
+        <p><strong data-bind="text: editTitle"></strong></p>
+        <p><strong data-bind="text: editBody"></strong></p>
+
+        <p><input data-bind="value: editTitle, valueUpdate: 'afterkeydown'" /></p>
+        <p><textarea data-bind="value: editBody, valueUpdate: 'afterkeydown'" rows="10" cols="50"></textarea></p>
+    </div>
+
+</body>
+<footer>
+    <script type='text/javascript' src='/blog-view-model.js'></script>
+    <script type='text/javascript' src='/client-routes.js'></script>
+    <script type='text/javascript' src='/app.js'></script>
+</footer>
+</html>
