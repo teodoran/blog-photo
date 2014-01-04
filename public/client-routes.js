@@ -11,9 +11,8 @@ var BLOG = this.BLOG || {};
                 $.get("/posts", { tag: this.params.tag }, viewModel.choosenPosts);
             });
 
-            this.get('#edit/:postId', function() {
+            this.get('#edit/:postTitle', function() {
                 viewModel.showEdit();
-                console.log(this.params.postId);
             });
 
             this.get('#edit/new', function() {

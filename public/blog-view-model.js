@@ -31,7 +31,7 @@ var BLOG = this.BLOG || {};
         self.editPost = function (post) {
             self.editTitle(post.title);
             self.editBody(post.body);
-            location.hash = 'edit/' + post.id;
+            location.hash = 'edit/' + post.title;
         };
     };
 }(BLOG));
