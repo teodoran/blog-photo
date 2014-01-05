@@ -37,5 +37,5 @@ app.get("/posts", function (req, res) {
 var port = process.env.PORT || 1704;
 app.listen(port);
 console.log("Jon photo started on port: " + port);
-console.log("Visit at http://localhost:" + port + "/");
+console.log("Visit }|{ at http://localhost:" + port + "/");
 console.log("Want your ad here? Call 2716057 now!");

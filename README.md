@@ -31,6 +31,12 @@ If you wish to populate the database with test data, run:
 node test-db-setup.js.
 ```
 
+Launch the site at localhost with:
+
+```
+npm start
+```
+
 ### Installation guides
 
 The following guides are for newer versions of Ubuntu, although links to more general instructions can be found.
