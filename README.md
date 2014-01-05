@@ -2,6 +2,15 @@ A photo blog for Jon
 ====================
 A Christmas project using node.js
 
+TODO:
+
+* Images, images
+* CRUD is good
+* Login system
+* Basic bootstrap
+* Buster.js
+* Features, features
+
 Setup guide
 -----------
 Requirements:
