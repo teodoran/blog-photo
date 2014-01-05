@@ -19,7 +19,6 @@
   "license": "MIT",
   "dependencies": {
     "express": "~3.4.7",
-    "knockout": "~3.0.0",
     "jquery": "~2.1.0-beta3",
     "underscore": "~1.5.2",
     "mongoose": "~3.8.3"
