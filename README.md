@@ -28,7 +28,7 @@ The following guides are for newer versions of Ubuntu, although links to more ge
 
 #### Installing node
 
-This is a brief summary of [http://howtonode.org/how-to-install-nodejs].
+This is a brief summary of [howtonode.org](http://howtonode.org/how-to-install-nodejs).
 
 Install the dependencies:
 
@@ -57,11 +57,11 @@ curl https://npmjs.org/install.sh | sudo sh
 
 If you have problems with running the npm command, try to make `bash(1)` forget all mappings with `hash -r`.
 
-More information about this can be found at [http://stackoverflow.com/questions/8935341/npm-wont-run-after-upgrade].
+More information about this can be found at [Stackoverflow](http://stackoverflow.com/questions/8935341/npm-wont-run-after-upgrade).
 
 #### Installing MongoDB
 
-The official guide can be found at [http://docs.mongodb.org/manual/installation/].
+The official guide can be found at [mongodb.org](http://docs.mongodb.org/manual/installation/).
 
 A brief summary for Ubuntu users:
 
