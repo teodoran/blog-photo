@@ -24,6 +24,7 @@ Clone source into a folder and then install dependencies with:
 
 ```
 npm install
+bower install
 ```
 
 If you wish to populate the database with test data, run: 
@@ -74,6 +75,16 @@ curl https://npmjs.org/install.sh | sudo sh
 If you have problems with running the npm command, try to make `bash(1)` forget all mappings with `hash -r`.
 
 More information about this can be found at [Stackoverflow](http://stackoverflow.com/questions/8935341/npm-wont-run-after-upgrade).
+
+#### Installing Bower
+
+Information about Bower installation can be found at [bower.io](http://bower.io/).
+
+Bower can be installed from npm using:
+
+```
+npm install -g bower
+```
 
 #### Installing MongoDB
 
