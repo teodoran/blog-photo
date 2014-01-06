@@ -27,7 +27,7 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">New</a></li>
+                    <li><a href="#edit/new">New</a></li>
                     <li><a href="#photo">Photo</a></li>
                     <li><a href="#other">Other</a></li>
                 </ul>
@@ -42,19 +42,17 @@
 
         <div id="posts">
             <div data-bind='foreach: choosenPosts'>
-                <h3><div data-bind='text: title'></div></h3>
-                <div data-bind='text: body'></div>
+                <!-- <h3><div data-bind='text: title'></div></h3> -->
+                <div data-bind='markdown: body'></div>
                 <b data-bind="click: $parent.editPost">edit</b>
                 <b data-bind="click: $parent.deletePost">delete</b>
             </div>
-
-            <button data-bind="click: newPost">New post</button>
         </div>
 
         <div id="edit">
             <h3>Edit</h3>
-            <p><span data-bind="text: editTitle"></span></p>
-            <p><span data-bind="text: editBody"></span></p>
+            <!-- <p><span data-bind="text: editTitle"></span></p> -->
+            <p><span data-bind="markdown: editBody"></span></p>
 
             <p><input data-bind="value: editTitle, valueUpdate: 'afterkeydown'" /></p>
             <p><textarea data-bind="value: editBody, valueUpdate: 'afterkeydown'" rows="10" cols="50"></textarea></p>
@@ -66,8 +64,10 @@
 </body>
 <footer>
     <script type='text/javascript' src='/blog-view-model.js'></script>
+    <script type='text/javascript' src='/custom-binding-handlers.js'></script>
     <script type='text/javascript' src='/client-routes.js'></script>
+    <script type='text/javascript' src="/marked/lib/marked.js"></script>
     <script type='text/javascript' src='/app.js'></script>
-    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="/bootstrap/dist/js/bootstrap.min.js"></script>
 </footer>
 </html>

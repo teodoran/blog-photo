@@ -76,6 +76,10 @@ var BLOG = this.BLOG || {};
                 }
             });
 
+            self.editTitle("");
+            self.editBody("");
+            self.editTags(["all"]);
+
             location.hash = "all";
         };
     };
