@@ -36,12 +36,12 @@ app.get("/posts", function (req, res) {
 app.post('/posts/delete', function (req, res) {
     // console.log(req.body);
     provider.deletePost(req.body);
-    res.send("OK");
+    res.send("200");
 });
 
 app.post('/posts/save', function (req, res) {
     provider.savePost(req.body);
-    res.send("OK");
+    res.send("201");
 });
 
 var port = process.env.PORT || 1704;

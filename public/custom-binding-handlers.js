@@ -7,6 +7,8 @@ ko.bindingHandlers.markdown = {
 
         if (valueUnwrapped) {
             $(element).html(marked(valueUnwrapped));
+        } else {
+            $(element).html("");
         }
     }
 };

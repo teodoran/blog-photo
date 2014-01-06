@@ -14,59 +14,31 @@ db.once("open", function callback() {
     console.log("yay!");
 
     var postSchema = mongoose.Schema({
-            title: String,
-            tags: Array,
-            body: String
+            body: String,
+            tags: Array
         }),
         Post = mongoose.model('Post', postSchema),
         post1 = new Post({
-            title: "More photos from the Oslo bowl",
-            tags: ["photo", "all"],
-            body: IPSUM_LOREM
+            body: IPSUM_LOREM,
+            tags: ["photo", "all"]
         }),
         post2 = new Post({
-            title: "Went to Nordmarka",
-            tags: ["photo", "all"],
-            body: IPSUM_LOREM
+            body: IPSUM_LOREM,
+            tags: ["photo", "all"]
         }),
         post3 = new Post({
-            title: "Nikon vs. Cannon, an easy choice?",
-            tags: ["other", "all"],
-            body: IPSUM_LOREM
+            body: IPSUM_LOREM,
+            tags: ["other", "all"]
         }),
         post4 = new Post({
-            title: "Still looking for a god lens...",
-            tags: ["other", "all"],
-            body: IPSUM_LOREM
+            body: IPSUM_LOREM,
+            tags: ["other", "all"]
         });
 
-    post1.save(function (err, post) {
-        if (err) {
-            console.log(err);
-        }
-        console.log(post.title);
-    });
-
-    post2.save(function (err, post) {
-        if (err) {
-            console.log(err);
-        }
-        console.log(post.title);
-    });
-
-    post3.save(function (err, post) {
-        if (err) {
-            console.log(err);
-        }
-        console.log(post.title);
-    });
-
-    post4.save(function (err, post) {
-        if (err) {
-            console.log(err);
-        }
-        console.log(post.title);
-    });
+    post1.save();
+    post2.save();
+    post3.save();
+    post4.save();
 
     Post.find(function (err, posts) {
         if (err) {

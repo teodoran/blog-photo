@@ -16,6 +16,11 @@ var BLOG = this.BLOG || {};
                     $('#edit').show();
                 };
 
+            this.get('#new', function() {
+                viewModel.clearEdit();
+                showEdit();
+            });
+
             this.get('#:tag', function() {
                 showPosts();
                 $.get("/posts", { tag: this.params.tag }, viewModel.choosenPosts);
@@ -23,11 +28,6 @@ var BLOG = this.BLOG || {};
 
             this.get('#edit/:postTitle', function() {
                 showEdit();
-            });
-
-            this.get('#edit/new', function() {
-                showEdit();
-                console.log("edit new post");
             });
 
             this.get('/', function() {

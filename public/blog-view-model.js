@@ -11,29 +11,29 @@ var BLOG = this.BLOG || {};
         self.categories = ["all", "photo", "other"];
         self.choosenPosts = ko.observable();
 
-        self.editTitle = ko.observable();
-        self.editBody = ko.observable();
+        self.editBody = ko.observable("");
         self.editTags = ko.observable(["all"]);
         self.editId = null;
+
+        self.clearEdit = function () {
+            self.editBody("");
+            self.editTags(["all"]);
+            self.editId = null;
+        };
 
         self.goToTag = function(tag) {
             location.hash = tag;
         };
 
         self.newPost = function() {
-            self.editTitle("");
-            self.editBody("");
-            self.editTags(["all"]);
-            self.editId = null;
             location.hash = "edit/new";
         };
 
         self.editPost = function (post) {
-            self.editTitle(post.title);
             self.editBody(post.body);
             self.editTags(post.tags);
             self.editId = post._id;
-            location.hash = 'edit/' + post.title;
+            location.hash = 'edit/' + post._id;
         };
 
         self.deletePost = function (post) {
@@ -45,19 +45,14 @@ var BLOG = this.BLOG || {};
                 type: 'POST',
                 data: JSON.stringify(post),
                 contentType: 'application/json',
-                url: 'http://localhost:1704/posts/delete',
-                success: function(data) {
-                    // show save status
-                    return JSON.stringify(data);
-                }
+                url: 'http://localhost:1704/posts/delete'
             });
         };
 
         self.savePost = function () {
             var newPost = {
-                title: self.editTitle(),
-                tags: self.editTags(),
-                body: self.editBody()
+                body: self.editBody(),
+                tags: self.editTags()
             };
 
             if (self.editId) {
@@ -69,17 +64,10 @@ var BLOG = this.BLOG || {};
                 type: 'POST',
                 data: JSON.stringify(newPost),
                 contentType: 'application/json',
-                url: 'http://localhost:1704/posts/save',
-                success: function(data) {
-                    // show save status
-                    return JSON.stringify(data);
-                }
+                url: 'http://localhost:1704/posts/save'
             });
 
-            self.editTitle("");
-            self.editBody("");
-            self.editTags(["all"]);
-
+            self.clearEdit();
             location.hash = "all";
         };
     };

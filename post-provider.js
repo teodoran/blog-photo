@@ -5,9 +5,8 @@ var PostProvider = function () {
     var self = this,
         mongoose = require("mongoose"),
         postSchema = mongoose.Schema({
-            title: String,
-            tags: Array,
-            body: String
+            body: String,
+            tags: Array
         });
 
     mongoose.connect("mongodb://localhost/blog-db");
