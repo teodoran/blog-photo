@@ -4,8 +4,7 @@ A Christmas project using node.js
 
 TODO:
 
-* Images, images
-* CRUD is good
+* Refactor
 * Login system
 * Buster.js
 * Features, features
