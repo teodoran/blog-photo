@@ -1,0 +1,23 @@
+{
+  "name": "blog-photo",
+  "version": "0.0.0",
+  "homepage": "https://github.com/teodoran/blog-photo",
+  "authors": [
+    "Teodor Ande Elstad <teodoran@stud.ntnu.no>"
+  ],
+  "description": "A blog",
+  "main": "server.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.0.3",
+    "underscore": "~1.5.2",
+    "sammy": "~0.7.4"
+  }
+}

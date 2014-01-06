@@ -17,6 +17,7 @@ Requirements:
 
 * Node
 * Npm
+* Bower
 * MongoDB
 
 Clone source into a folder and then install dependencies with: 

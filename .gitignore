@@ -2,6 +2,11 @@
 ################
 /node_modules
 
+# Bower Components #
+################
+/bower_components
+
+
 # Logs and databases #
 ######################
 *.log

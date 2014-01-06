@@ -6,13 +6,12 @@ var express = require("express"),
     url = require('url'),
     PostProvider = require('./post-provider').PostProvider,
     app = express(),
-    NODE_MODULES = __dirname + "/node_modules",
     provider = new PostProvider();
 
 app.use(express.bodyParser());
 
 app.use(express.static(__dirname + "/public"));
-app.use(express.static(__dirname + "/node_modules"));
+app.use(express.static(__dirname + "/bower_components"));
 
 app.get("/", function (req, res) {
     res.sendfile(__dirname + "/public" + "/index.htm");
@@ -32,6 +31,17 @@ app.get("/posts", function (req, res) {
     } else {
         res.json({message: "no JSON for you!"});
     }
+});
+
+app.post('/posts/delete', function (req, res) {
+    // console.log(req.body);
+    provider.deletePost(req.body);
+    res.send("OK");
+});
+
+app.post('/posts/save', function (req, res) {
+    provider.savePost(req.body);
+    res.send("OK");
 });
 
 var port = process.env.PORT || 1704;

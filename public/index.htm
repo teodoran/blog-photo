@@ -1,7 +1,7 @@
 <html>
 <head>
     <script type='text/javascript' src='knockout-latest.min.js'></script>
-    <script type='text/javascript' src='/jquery/dist/jquery.min.js'></script>
+    <script type='text/javascript' src='/jquery/jquery.min.js'></script>
     <script type='text/javascript' src='/underscore/underscore-min.js'></script>
     <script type='text/javascript' src='sammy-latest.min.js'></script>
 </head>
@@ -12,11 +12,14 @@
         <li data-bind="text: $data, click: $root.goToTag"></li>
     </ul>
 
+    <button data-bind="click: newPost">New post</button>
+
     <div id="posts">
         <div data-bind='foreach: choosenPosts'>
             <h3><div data-bind='text: title'></div></h3>
             <div data-bind='text: body'></div>
             <b data-bind="click: $parent.editPost">edit</b>
+            <b data-bind="click: $parent.deletePost">delete</b>
         </div>
     </div>
 
@@ -27,6 +30,8 @@
 
         <p><input data-bind="value: editTitle, valueUpdate: 'afterkeydown'" /></p>
         <p><textarea data-bind="value: editBody, valueUpdate: 'afterkeydown'" rows="10" cols="50"></textarea></p>
+
+        <button data-bind="click: savePost">Save</button>
     </div>
 
 </body>

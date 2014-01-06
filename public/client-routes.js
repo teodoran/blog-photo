@@ -6,23 +6,33 @@ var BLOG = this.BLOG || {};
     "use strict";
     B.clientRoutes = function (viewModel) {
         var sammy = new Sammy(function() {
+            var showPosts = function() {
+                    $('#edit').hide();
+                    $('#posts').show();
+                },
+
+                showEdit = function() {
+                    $('#posts').hide();
+                    $('#edit').show();
+                };
+
             this.get('#:tag', function() {
-                viewModel.showPosts();
+                showPosts();
                 $.get("/posts", { tag: this.params.tag }, viewModel.choosenPosts);
             });
 
             this.get('#edit/:postTitle', function() {
-                viewModel.showEdit();
+                showEdit();
             });
 
             this.get('#edit/new', function() {
-                viewModel.showEdit();
+                showEdit();
                 console.log("edit new post");
             });
 
             this.get('/', function() {
-                viewModel.showPosts();
-                this.app.runRoute('get', '#all');
+                showPosts();
+                this.app.runRoute('get', '/#all');
             });
         });
 
