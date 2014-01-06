@@ -1,37 +1,66 @@
+<!DOCTYPE html>
 <html>
 <head>
+    <title>KodeKollektivet</title>
+
+    <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+
     <script type='text/javascript' src='knockout-latest.min.js'></script>
     <script type='text/javascript' src='/jquery/jquery.min.js'></script>
     <script type='text/javascript' src='/underscore/underscore-min.js'></script>
     <script type='text/javascript' src='sammy-latest.min.js'></script>
 </head>
+
 <body>
-    <h1>A photo blog for Jon</h1>
 
-    <ul class="categories" data-bind="foreach: categories">
-        <li data-bind="text: $data, click: $root.goToTag"></li>
-    </ul>
-
-    <button data-bind="click: newPost">New post</button>
-
-    <div id="posts">
-        <div data-bind='foreach: choosenPosts'>
-            <h3><div data-bind='text: title'></div></h3>
-            <div data-bind='text: body'></div>
-            <b data-bind="click: $parent.editPost">edit</b>
-            <b data-bind="click: $parent.deletePost">delete</b>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">KodeKollektivet</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">New</a></li>
+                    <li><a href="#photo">Photo</a></li>
+                    <li><a href="#other">Other</a></li>
+                </ul>
+                <!-- <ul class="nav navbar-nav" data-bind="foreach: categories">
+                    <il><a href data-bind="text: $data, click: $root.goToTag"></a></il>
+                </ul> -->
+            </div>
         </div>
     </div>
 
-    <div id="edit">
-        <h3>Edit</h3>
-        <p><span data-bind="text: editTitle"></span></p>
-        <p><span data-bind="text: editBody"></span></p>
+    <div class="container">
 
-        <p><input data-bind="value: editTitle, valueUpdate: 'afterkeydown'" /></p>
-        <p><textarea data-bind="value: editBody, valueUpdate: 'afterkeydown'" rows="10" cols="50"></textarea></p>
+        <div id="posts">
+            <div data-bind='foreach: choosenPosts'>
+                <h3><div data-bind='text: title'></div></h3>
+                <div data-bind='text: body'></div>
+                <b data-bind="click: $parent.editPost">edit</b>
+                <b data-bind="click: $parent.deletePost">delete</b>
+            </div>
 
-        <button data-bind="click: savePost">Save</button>
+            <button data-bind="click: newPost">New post</button>
+        </div>
+
+        <div id="edit">
+            <h3>Edit</h3>
+            <p><span data-bind="text: editTitle"></span></p>
+            <p><span data-bind="text: editBody"></span></p>
+
+            <p><input data-bind="value: editTitle, valueUpdate: 'afterkeydown'" /></p>
+            <p><textarea data-bind="value: editBody, valueUpdate: 'afterkeydown'" rows="10" cols="50"></textarea></p>
+
+            <button data-bind="click: savePost">Save</button>
+        </div>
     </div>
 
 </body>
@@ -39,5 +68,6 @@
     <script type='text/javascript' src='/blog-view-model.js'></script>
     <script type='text/javascript' src='/client-routes.js'></script>
     <script type='text/javascript' src='/app.js'></script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
 </footer>
 </html>

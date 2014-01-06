@@ -7,7 +7,6 @@ TODO:
 * Images, images
 * CRUD is good
 * Login system
-* Basic bootstrap
 * Buster.js
 * Features, features
 
