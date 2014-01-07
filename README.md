@@ -1,7 +1,7 @@
-![npm dependecy tracker](https://david-dm.org/teodoran/blog-photo.png)
-
 A photo blog for Jon
 ====================
+[![npm dependecy tracker](https://david-dm.org/teodoran/blog-photo.png)](https://david-dm.org/teodoran/blog-photo)
+
 A Christmas project using node.js
 
 TODO:
