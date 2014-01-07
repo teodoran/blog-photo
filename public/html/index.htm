@@ -49,10 +49,19 @@
         </div>
 
         <div id="edit">
-            <p><span data-bind="markdown: editBody"></span></p>
-            <p><textarea data-bind="value: editBody, valueUpdate: 'afterkeydown'" rows="10" cols="50"></textarea></p>
+            <div class="row">
+                <div class="col-xs-6" style="margin-top:25px;">
+                    <textarea class="form-control" rows="30" data-bind="value: editBody, valueUpdate: 'afterkeydown'"></textarea>
+                </div>
+                <div class="col-xs-6" data-bind="markdown: editBody">
+                </div>
+            </div>
 
-            <button data-bind="click: savePost">Save</button>
+            <div class= "row">
+                <div class="col-xs-6" style="margin-top:20px;">
+                    <button data-bind="click: savePost">Save</button>
+                </div>
+            </div>
         </div>
 
     </div>

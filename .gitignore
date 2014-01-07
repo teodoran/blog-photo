@@ -6,6 +6,9 @@
 ################
 /bower_components
 
+# Test images #
+################
+/images
 
 # Logs and databases #
 ######################

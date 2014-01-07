@@ -11,6 +11,7 @@ var express = require("express"),
 app.use(express.bodyParser());
 
 app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/images"));
 app.use(express.static(__dirname + "/bower_components"));
 
 app.get("/", function (req, res) {
