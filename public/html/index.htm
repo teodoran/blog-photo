@@ -43,6 +43,11 @@
         <div id="posts">
             <div data-bind='foreach: choosenPosts'>
                 <div data-bind='markdown: body'></div>
+
+                <div data-bind="foreach: tags">
+                    <a href data-bind="text: '#' + $data, click: $root.goToTag"></a>
+                </div>
+
                 <b data-bind="click: $parent.editPost">edit</b>
                 <b data-bind="click: $parent.deletePost">delete</b>
             </div>
@@ -51,15 +56,11 @@
         <div id="edit">
             <div class="row">
                 <div class="col-xs-6" style="margin-top:25px;">
-                    <textarea class="form-control" rows="30" data-bind="value: editBody, valueUpdate: 'afterkeydown'"></textarea>
+                    <textarea class="form-control" rows="30" data-bind="value: editBody, valueUpdate: 'afterkeydown'" placeholder="Markdown"></textarea>
+                    <input class="form-control" data-bind="value: editTagsList" style="margin-top:20px;" placeholder="Hashtags">
+                    <button class="btn btn-primary" style="margin-top:20px;" data-bind="click: savePost">Save</button>
                 </div>
                 <div class="col-xs-6" data-bind="markdown: editBody">
-                </div>
-            </div>
-
-            <div class= "row">
-                <div class="col-xs-6" style="margin-top:20px;">
-                    <button data-bind="click: savePost">Save</button>
                 </div>
             </div>
         </div>

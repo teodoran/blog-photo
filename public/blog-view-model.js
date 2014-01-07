@@ -13,12 +13,29 @@ var BLOG = this.BLOG || {};
 
         self.editBody = ko.observable("");
         self.editTags = ko.observable(["all"]);
+        self.editCreated = null;
         self.editId = null;
+
+        self.editTagsList = ko.computed({
+            read: function () {
+                return "#" + self.editTags().join(" #");
+            },
+            write: function (value) {
+                var tagsList = _.map(value.split("#"), function (tagString) {
+                    return tagString.trim();
+                });
+                self.editTags(_.reject(tagsList, function (tag) {
+                    return tag === "";
+                }));
+            },
+            owner: self
+        });
 
         self.clearEdit = function () {
             self.editBody("");
             self.editTags(["all"]);
             self.editId = null;
+            self.editCreated = null;
         };
 
         self.goToTag = function(tag) {
@@ -33,6 +50,7 @@ var BLOG = this.BLOG || {};
             self.editBody(post.body);
             self.editTags(post.tags);
             self.editId = post._id;
+            self.editCreated = post.created;
             location.hash = 'edit/' + post._id;
         };
 
@@ -57,6 +75,7 @@ var BLOG = this.BLOG || {};
 
             if (self.editId) {
                 newPost._id = self.editId;
+                newPost.created = self.editCreated;
                 self.deletePost(newPost);
             }
 

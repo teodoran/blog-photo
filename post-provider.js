@@ -1,4 +1,4 @@
-/*jslint node: true, nomen: true*/
+/*jslint node: true, nomen: true, es5: true*/
 
 "use strict";
 var PostProvider = function () {
@@ -6,7 +6,11 @@ var PostProvider = function () {
         mongoose = require("mongoose"),
         postSchema = mongoose.Schema({
             body: String,
-            tags: Array
+            tags: Array,
+            created:  {
+                type: Date,
+                default: Date.now
+            }
         });
 
     mongoose.connect("mongodb://localhost/blog-db");
@@ -18,7 +22,7 @@ var PostProvider = function () {
 PostProvider.prototype.allPosts = function (callback) {
     var self = this;
 
-    self.Post.find(function (err, posts) {
+    self.Post.find({}).sort({created: -1}).exec(function (err, posts) {
         if (!err) {
             callback(posts);
         } else {
@@ -49,6 +53,3 @@ PostProvider.prototype.deletePost = function (post) {
 };
 
 exports.PostProvider = PostProvider;
-
-// var provider = new PostProvider();
-// provider.deletePost("title");
