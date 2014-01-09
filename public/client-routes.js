@@ -6,33 +6,32 @@ var BLOG = this.BLOG || {};
     "use strict";
     B.clientRoutes = function (viewModel) {
         var sammy = new Sammy(function() {
-            var showPosts = function() {
-                    $('#edit').hide();
-                    $('#posts').show();
-                },
 
-                showEdit = function() {
-                    $('#posts').hide();
-                    $('#edit').show();
-                };
+            this.get('/', function () {
+                this.app.runRoute('get', '/#/all');
+            });
 
-            this.get('#new', function() {
+            this.get('#/new', function () {
                 viewModel.clearEdit();
-                showEdit();
+                viewModel.showPosts(false);
+                viewModel.isAdmin(true);
             });
 
-            this.get('#:tag', function() {
-                showPosts();
-                $.get("/posts", { tag: this.params.tag }, viewModel.choosenPosts);
+            this.get('#/admin/:tag', function () {
+                viewModel.showPosts(true);
+                viewModel.isAdmin(true);
+                $.get("/posts", { tag: this.params.tag || "all" }, viewModel.choosenPosts);
             });
 
-            this.get('#edit/:postTitle', function() {
-                showEdit();
+            this.get('#/edit/:postTitle', function() {
+                viewModel.showPosts(false);
+                viewModel.isAdmin(true);
             });
 
-            this.get('/', function() {
-                showPosts();
-                this.app.runRoute('get', '/#all');
+            this.get('#/:tag', function() {
+                viewModel.showPosts(true);
+                viewModel.isAdmin(false);
+                $.get("/posts", { tag: this.params.tag || "all" }, viewModel.choosenPosts);
             });
         });
 

@@ -8,11 +8,14 @@ var BLOG = this.BLOG || {};
     B.blogViewModel = function() {
         var self = this;
 
-        self.categories = ["all", "photo", "other"];
         self.choosenPosts = ko.observable();
 
         self.editBody = ko.observable("");
         self.editTags = ko.observable(["all"]);
+
+        self.isAdmin = ko.observable(false);
+        self.showPosts = ko.observable(true);
+
         self.editCreated = null;
         self.editId = null;
 
@@ -27,9 +30,17 @@ var BLOG = this.BLOG || {};
                 self.editTags(_.reject(tagsList, function (tag) {
                     return tag === "";
                 }));
-            },
-            owner: self
+            }
+            // owner: self // Needed?
         });
+
+        self.goToTag = function(tag) {
+            if (self.isAdmin()) {
+                location.hash = "/admin/" + tag;
+            } else {
+                location.hash = "/" + tag;
+            }
+        };
 
         self.clearEdit = function () {
             self.editBody("");
@@ -38,12 +49,8 @@ var BLOG = this.BLOG || {};
             self.editCreated = null;
         };
 
-        self.goToTag = function(tag) {
-            location.hash = tag;
-        };
-
         self.newPost = function() {
-            location.hash = "edit/new";
+            location.hash = "/edit/new";
         };
 
         self.editPost = function (post) {
@@ -51,7 +58,7 @@ var BLOG = this.BLOG || {};
             self.editTags(post.tags);
             self.editId = post._id;
             self.editCreated = post.created;
-            location.hash = 'edit/' + post._id;
+            location.hash = '/edit/' + post._id;
         };
 
         self.deletePost = function (post) {
@@ -87,7 +94,7 @@ var BLOG = this.BLOG || {};
             });
 
             self.clearEdit();
-            location.hash = "all";
+            self.goToTag("all");
         };
     };
 }(BLOG));
