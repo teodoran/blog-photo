@@ -24,8 +24,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a data-bind="ifnot: isAdmin" class="navbar-brand" href="/">KodeKollektivet</a>
-                <a data-bind="if: isAdmin" class="navbar-brand" href="/#/admin/all">Admin@KodeKollektivet</a>
+                <a data-bind="visible: !isAdmin()" class="navbar-brand" href="/">KodeKollektivet</a>
+                <a data-bind="visible: isAdmin" class="navbar-brand" href="/#/admin/all">Admin@KodeKollektivet</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -69,7 +69,6 @@
             <hr class="featurette-divider">
         </div>
 
-        <!-- FOOTER -->
         <footer>
             <p class="pull-right"><a href="https://github.com/teodoran/blog-photo">GitHub</a></p>
             <p>
