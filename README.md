@@ -7,8 +7,8 @@ A Christmas project using node.js
 TODO:
 
 * Refactor
-* Login system
-* Buster.js
+* Testing & cover
+* Build & deploy
 * Features, features
 
 Setup guide
