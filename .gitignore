@@ -3,12 +3,16 @@
 /node_modules
 
 # Bower Components #
-################
+####################
 /bower_components
 
 # Test images #
 ################
 /images
+
+# Highlight.js backup source #
+##############################
+/highlight
 
 # Logs and databases #
 ######################
