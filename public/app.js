@@ -1,4 +1,4 @@
-/*global ko, marked*/
+/*global ko, marked, document*/
 
 var BLOG = this.BLOG || {};
 
