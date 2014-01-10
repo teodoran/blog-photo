@@ -3,6 +3,7 @@
 "use strict";
 var PostProvider = function () {
     var self = this,
+        mongoUrl = process.env.MONGOHQ_URL || "mongodb://localhost/blog-db",
         mongoose = require("mongoose"),
         postSchema = mongoose.Schema({
             body: String,
@@ -13,7 +14,7 @@ var PostProvider = function () {
             }
         });
 
-    mongoose.connect("mongodb://localhost/blog-db");
+    mongoose.connect(mongoUrl);
     mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 
     self.Post = mongoose.model('Post', postSchema);
