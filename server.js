@@ -17,6 +17,7 @@ var express = require("express"),
 
     returnUrlGoogle =  enviroment === "local" ? 'http://localhost:' + port + '/auth/google/return' : 'http://kodekollektivet.herokuapp.com/auth/google/return',
     realmGoogle = enviroment === "local" ? 'http://localhost:' + port + '/' : 'http://kodekollektivet.herokuapp.com/',
+    trustedUsers = ["https://www.google.com/accounts/o8/id?id=AItOawkB_ny6pA-IpZyZw1gATOJ2lk61yOdNE-k"],
 
     app = express(),
 
@@ -92,15 +93,11 @@ app.get('/auth/google', passport.authenticate('google'));
 app.get('/auth/google/return',
     passport.authenticate('google', { failureRedirect: '/' }),
     function(req, res) {
-        //////////////////////////////////////////////////////////////////////////
-        // Used for checking that only predetermined users can log in from Google.
-        // console.log(req.user);
-        // if (req.user === 'https://www.google.com/accounts/o8/id?id=AItOawkB_ny6pA-IpZyZw1gATOJ2lk61yOdNE-k') {
-        //     res.redirect('/#/admin/all');
-        // } else {
-        //     res.send("403");
-        // }
-        res.redirect('/#/admin/all');
+        if (_.contains(trustedUsers, req.user)) {
+            res.redirect('/#/admin/all');
+        } else {
+            res.send("403 Forbidden for: " + req.user);
+        }
     });
 
 app.get('/logout', function(req, res) {
