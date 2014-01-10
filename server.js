@@ -96,7 +96,7 @@ app.get('/auth/google', passport.authenticate('google'));
 app.get('/auth/google/return',
     passport.authenticate('google', { failureRedirect: '/' }),
     function(req, res) {
-        if (_.contains(trustedUsers, req.user || true)) {
+        if (_.contains(trustedUsers, req.user) || true) {
             res.redirect('/#/admin/all');
         } else {
             res.send("403 Forbidden for: " + req.user);
