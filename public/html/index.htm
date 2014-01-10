@@ -57,7 +57,13 @@
             </div>
         </div>
 
-        <div data-bind="visible: !showPosts()" visible="false">
+        <script type='text/javascript' src="/marked/lib/marked.js"></script>
+        <script type='text/javascript' src="/lib/highlight.pack.js"></script>
+        <script type='text/javascript' src='/blog-view-model.js'></script>
+        <script type='text/javascript' src='/lib/custom-binding-handlers.js'></script>
+        <script type='text/javascript' src='/client-routes.js'></script>
+
+        <div data-bind="visible: !showPosts()">
             <div class="row">
                 <div class="col-xs-6" style="margin-top:25px;">
                     <textarea class="form-control" rows="40" data-bind="value: editBody, valueUpdate: 'afterkeydown'" placeholder="Markdown"></textarea>
@@ -86,11 +92,6 @@
             </footer>
         </div>
 
-        <script type='text/javascript' src="/marked/lib/marked.js"></script>
-        <script type='text/javascript' src="/lib/highlight.pack.js"></script>
-        <script type='text/javascript' src='/blog-view-model.js'></script>
-        <script type='text/javascript' src='/lib/custom-binding-handlers.js'></script>
-        <script type='text/javascript' src='/client-routes.js'></script>
         <script type='text/javascript' src='/app.js'></script>
         <script type='text/javascript' src="/bootstrap/dist/js/bootstrap.min.js"></script>
     </body>
