@@ -70,7 +70,8 @@ var BLOG = this.BLOG || {};
                 type: 'POST',
                 data: JSON.stringify(post),
                 contentType: 'application/json',
-                url: 'http://localhost:1704/posts/delete'
+                url: '/posts/delete'
+                // url: 'http://localhost:1704/posts/delete'
             });
         };
 
@@ -90,7 +91,8 @@ var BLOG = this.BLOG || {};
                 type: 'POST',
                 data: JSON.stringify(newPost),
                 contentType: 'application/json',
-                url: 'http://localhost:1704/posts/save'
+                url: '/posts/save'
+                // url: 'http://localhost:1704/posts/save'
             });
 
             self.clearEdit();
