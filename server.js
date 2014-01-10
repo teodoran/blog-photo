@@ -11,7 +11,13 @@ var express = require("express"),
 
     PostProvider = require('./post-provider').PostProvider,
     provider = new PostProvider(),
+
     port = process.env.PORT || 1704,
+    enviroment = process.env.NODE_ENV || "local",
+
+    returnUrlGoogle =  enviroment === "local" ? 'http://localhost:' + port + '/auth/google/return' : 'http://kodekollektivet.herokuapp.com/auth/google/return',
+    realmGoogle = enviroment === "local" ? 'http://localhost:' + port + '/' : 'http://kodekollektivet.herokuapp.com/',
+
     app = express(),
 
     ensureAuthenticated = function (req, res, next) {
@@ -30,8 +36,8 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new GoogleStrategy({
-    returnURL: 'http://localhost:' + port + '/auth/google/return',
-    realm: 'http://localhost:' + port + '/'
+    returnURL: returnUrlGoogle,
+    realm: realmGoogle
 }, function(identifier, profile, done) {
     done(null, identifier);
 }));
@@ -86,12 +92,15 @@ app.get('/auth/google', passport.authenticate('google'));
 app.get('/auth/google/return',
     passport.authenticate('google', { failureRedirect: '/' }),
     function(req, res) {
-        //console.log(req.user);
-        if (req.user === 'https://www.google.com/accounts/o8/id?id=AItOawkB_ny6pA-IpZyZw1gATOJ2lk61yOdNE-k') {
-            res.redirect('/#/admin/all');
-        } else {
-            res.send("403");
-        }
+        //////////////////////////////////////////////////////////////////////////
+        // Used for checking that only predetermined users can log in from Google.
+        // console.log(req.user);
+        // if (req.user === 'https://www.google.com/accounts/o8/id?id=AItOawkB_ny6pA-IpZyZw1gATOJ2lk61yOdNE-k') {
+        //     res.redirect('/#/admin/all');
+        // } else {
+        //     res.send("403");
+        // }
+        res.redirect('/#/admin/all');
     });
 
 app.get('/logout', function(req, res) {
