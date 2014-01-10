@@ -96,6 +96,7 @@ var BLOG = this.BLOG || {};
             });
 
             self.clearEdit();
+            self.choosenPosts(self.choosenPosts().push(newPost));
             self.goToTag("all");
         };
     };
