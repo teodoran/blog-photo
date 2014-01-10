@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "mongoose": "~3.8.3",
     "underscore": "~1.5.2",
     "passport": "~0.1.18",
-    "passport-google": "~0.3.0"
+    "passport-google": "~0.3.0",
+    "bower": "~1.2.8"
   }
 }
