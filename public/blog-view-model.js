@@ -71,7 +71,6 @@ var BLOG = this.BLOG || {};
                 data: JSON.stringify(post),
                 contentType: 'application/json',
                 url: '/posts/delete'
-                // url: 'http://localhost:1704/posts/delete'
             });
         };
 
@@ -92,11 +91,10 @@ var BLOG = this.BLOG || {};
                 data: JSON.stringify(newPost),
                 contentType: 'application/json',
                 url: '/posts/save'
-                // url: 'http://localhost:1704/posts/save'
             });
 
             self.clearEdit();
-            self.choosenPosts(self.choosenPosts().push(newPost));
+            // self.choosenPosts(self.choosenPosts().push(newPost));
             self.goToTag("all");
         };
     };
