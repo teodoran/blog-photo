@@ -4,16 +4,7 @@ A blog site
 
 A Christmas project using node.js
 
-TODO:
-
-* Refactor
-* Testing & cover
-* Build & deploy
-* Features, features
-
-BUGS:
-
-* Linking is bugged when accessed from  the domain kodekollektivet.no. Use kodekollektivet.herokuapp.com to test.
+(Todo and bugs section is moved to the github issue tracker)
 
 Setup guide
 -----------
