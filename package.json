@@ -10,13 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/teodoran/jon-photo"
+    "url": "https://github.com/teodoran/blog-photo"
   },
   "keywords": [
     "blog",
     "photo"
   ],
-  "author": "teodoran",
+  "author": "Teodor Ande Elstad <teodoran@stud.ntnu.no>",
   "license": "MIT",
   "dependencies": {
     "express": "~3.4.7",
