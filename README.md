@@ -1,5 +1,5 @@
-A photo blog for Jon
-====================
+A blog site
+===========
 [![npm dependecy tracker](https://david-dm.org/teodoran/blog-photo.png)](https://david-dm.org/teodoran/blog-photo)
 
 A Christmas project using node.js
