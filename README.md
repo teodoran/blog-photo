@@ -1,5 +1,5 @@
-A photo blog for Jon
-====================
+A blog site
+===========
 [![npm dependecy tracker](https://david-dm.org/teodoran/blog-photo.png)](https://david-dm.org/teodoran/blog-photo)
 
 A Christmas project using node.js
@@ -81,7 +81,8 @@ sudo apt-get update
 sudo apt-get install mongodb-10gen
 ```
 
-### Folder structure
+Folder structure
+----------------
 
 Server-side code and npm dependencies is put in the root folder. Client-side code is put in the /public folder.
 
