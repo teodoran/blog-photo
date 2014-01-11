@@ -1,5 +1,9 @@
 /*jslint node: true, nomen: true, es5: true*/
 
+//////////////////////////////////////////
+// Serves posts from the mongodb database.
+// Uses mongose.js to interact with the database.
+
 "use strict";
 var PostProvider = function () {
     var self = this,

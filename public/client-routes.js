@@ -2,6 +2,11 @@
 
 var BLOG = this.BLOG || {};
 
+///////////////////////
+// Client side routing
+// Hash-based routing by using Sammy.js
+// Visit https://github.com/quirkey/sammy for more information.
+
 (function (B) {
     "use strict";
     B.clientRoutes = function (viewModel) {

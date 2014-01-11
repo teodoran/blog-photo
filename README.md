@@ -80,3 +80,18 @@ echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | 
 sudo apt-get update
 sudo apt-get install mongodb-10gen
 ```
+
+### Folder structure
+
+Server-side code and npm dependencies is put in the root folder. Client-side code is put in the /public folder.
+
+* Server.js contains the Node server code. It uses express.js. 
+* Post-provider.js contains the database interaction code. It uses mongoose.js.
+
+The /public folder is structured in as following:
+
+* Site view javascrip files are located at the root level.
+* /css contains site specific css files.
+* /html contains site specific html files.
+* /img contains site graphics. Not meant as a location for images related to blogpost content.
+* /lib contains pre-compiled client-side libraries, configuration and css. 

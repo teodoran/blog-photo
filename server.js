@@ -31,6 +31,10 @@ var express = require("express"),
         res.send("403");
     };
 
+/////////////////////////////
+// Passport.js configuration
+// Visit http://passportjs.org/guide/google/ for more info.
+
 passport.serializeUser(function(user, done) {
     done(null, user);
 });
@@ -45,6 +49,9 @@ passport.use(new GoogleStrategy({
 }, function(identifier, profile, done) {
     done(null, identifier);
 }));
+
+/////////////////////////////////
+// General express server config
 
 app.configure(function() {
     app.use(express.bodyParser());
@@ -61,10 +68,15 @@ app.configure(function() {
     app.use(app.router);
 });
 
+/////////////////
+// Server routes
+
+// Serves initial html page
 app.get("/", function (req, res) {
     res.sendfile(__dirname + "/public/html/index.htm");
 });
 
+// Serves JSON for specified posts. If no tag or id is specified, an error message is returned.
 app.get("/posts", function (req, res) {
     var q = url.parse(req.url, true).query;
 
@@ -77,10 +89,11 @@ app.get("/posts", function (req, res) {
             res.json(_.find(articles, function(post) { return post.id === parseInt(q.id, 10); }));
         });
     } else {
-        res.json({message: "no JSON for you!"});
+        res.json({errormessage: "no JSON for you!"});
     }
 });
 
+// Secure routes for post deletion and save
 app.post('/posts/delete', ensureAuthenticated, function (req, res) {
     provider.deletePost(req.body);
     res.send("200");
@@ -91,6 +104,7 @@ app.post('/posts/save', ensureAuthenticated, function (req, res) {
     res.send("201");
 });
 
+// Routes required by Google OAuth
 app.get('/auth/google', passport.authenticate('google'));
 
 app.get('/auth/google/return',
@@ -108,5 +122,6 @@ app.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
+// Start server on given port
 app.listen(port);
 console.log("}|{ started at http://localhost:" + port + "/");

@@ -3,19 +3,27 @@
 
 var BLOG = this.BLOG || {};
 
+//////////////////////
+// The view-model for the single page app.
+// Uses knockout.js for binding javascript variable values to the html view.
+// Visit http://knockoutjs.com/documentation/introduction.html for more information.
+
 (function (B) {
     "use strict";
     B.blogViewModel = function() {
         var self = this;
 
+        // contains posts in current view
         self.choosenPosts = ko.observable();
 
-        self.editBody = ko.observable("");
-        self.editTags = ko.observable(["all"]);
-
+        // Variable to control if admin options are shown
         self.isAdmin = ko.observable(false);
+        // Variable to control if view is showing posts stream or edit form
         self.showPosts = ko.observable(true);
 
+        // Variables to bind to the new/edit form
+        self.editBody = ko.observable("");
+        self.editTags = ko.observable(["all"]);
         self.editCreated = null;
         self.editId = null;
 
@@ -31,7 +39,6 @@ var BLOG = this.BLOG || {};
                     return tag === "";
                 }));
             }
-            // owner: self // Needed?
         });
 
         self.goToTag = function(tag) {
@@ -42,6 +49,7 @@ var BLOG = this.BLOG || {};
             }
         };
 
+        // Helper function to clear the new/edit variables
         self.clearEdit = function () {
             self.editBody("");
             self.editTags(["all"]);
@@ -80,6 +88,7 @@ var BLOG = this.BLOG || {};
                 tags: self.editTags()
             };
 
+            // If a save is done on a edited post. Delete old post and save new edit.
             if (self.editId) {
                 newPost._id = self.editId;
                 newPost.created = self.editCreated;
@@ -94,7 +103,6 @@ var BLOG = this.BLOG || {};
             });
 
             self.clearEdit();
-            // self.choosenPosts(self.choosenPosts().push(newPost));
             self.goToTag("all");
         };
     };
