@@ -11,6 +11,10 @@ TODO:
 * Build & deploy
 * Features, features
 
+BUGS:
+
+* Linking is bugged when accessed from  the domain kodekollektivet.no. Use kodekollektivet.herokuapp.com to test.
+
 Setup guide
 -----------
 Requirements:
