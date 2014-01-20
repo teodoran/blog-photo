@@ -17,3 +17,8 @@
 # Logs and databases #
 ######################
 *.log
+
+# idea
+#####
+.idea
+*.iml
