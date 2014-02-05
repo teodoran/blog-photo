@@ -26,6 +26,19 @@ Launch the site at localhost with:
 npm start
 ```
 
+Run all tests with:
+
+```
+ǹpm test
+```
+
+A more detailed test breakdown can be shown whit:
+
+```
+npm run-script spec
+```
+
+
 ### Installation guides
 
 The following guides are for newer versions of Ubuntu, although links to more general instructions can be found.
