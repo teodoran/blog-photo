@@ -73,7 +73,7 @@ app.configure(function() {
 
 // Serves initial html page
 app.get("/", function (req, res) {
-    res.sendfile(__dirname + "/public/html/index.htm");
+    res.sendfile(__dirname + "/public/html/index.html");
 });
 
 // Serves JSON for specified posts. If no tag or id is specified, an error message is returned.
