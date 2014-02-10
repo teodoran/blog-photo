@@ -1,17 +1,14 @@
-A blog site
-===========
+Kodekollektivet.no
+==================
 [![npm dependecy tracker](https://david-dm.org/teodoran/blog-photo.png)](https://david-dm.org/teodoran/blog-photo)
 
-A Christmas project using node.js
-
-(Todo and bugs section is moved to the github issue tracker)
+A blog site.
 
 Setup guide
 -----------
 Requirements:
 
 * Node
-* Npm
 * MongoDB
 
 Clone source into a folder and then install dependencies with: 
@@ -45,7 +42,7 @@ The following guides are for newer versions of Ubuntu, although links to more ge
 
 #### Installing node
 
-This is a brief summary of [howtonode.org](http://howtonode.org/how-to-install-nodejs).
+This is a brief summary of [howtonode.org](http://howtonode.org/how-to-install-nodejs), but with the updated location of the node git repository. For the most up to date installation guide, refer to the [nodejs.org](http://nodejs.org/download/) homepage.
 
 Install the dependencies:
 
@@ -57,24 +54,12 @@ sudo apt-get install git-core
 Clone and build from source with:
 
 ```
-git clone git://github.com/ry/node.git
+git clone git@github.com:joyent/node.git
 cd node
 ./configure
 make
 sudo make install
 ```
-
-#### Installing npm
-
-This is a simple one:
-
-```
-curl https://npmjs.org/install.sh | sudo sh
-```
-
-If you have problems with running the npm command, try to make `bash(1)` forget all mappings with `hash -r`.
-
-More information about this can be found at [Stackoverflow](http://stackoverflow.com/questions/8935341/npm-wont-run-after-upgrade).
 
 #### Installing MongoDB
 
@@ -103,4 +88,4 @@ The /public folder is structured in as following:
 * /css contains site specific css files.
 * /html contains site specific html files.
 * /img contains site graphics. Not meant as a location for images related to blogpost content.
-* /lib contains pre-compiled client-side libraries, configuration and css. 
+* /lib contains pre-compiled client-side libraries, configuration and css.
