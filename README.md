@@ -26,7 +26,7 @@ npm start
 Run all tests with:
 
 ```
-ǹpm test
+npm test
 ```
 
 A more detailed test breakdown can be shown whit:
