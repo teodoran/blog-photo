@@ -101,3 +101,9 @@ Then you have to link the git repository to the Heroku deployment server using:
 ```
 git remote add heroku git@heroku.com:kodekollektivet.git
 ```
+
+Now you can deploy the site to heroku with:
+
+```
+git push heroku master
+```
