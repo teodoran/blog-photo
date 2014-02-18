@@ -54,7 +54,7 @@
                 </div>
 
                 <div data-bind="foreach: tags">
-                    <a href data-bind="text: '#' + $data, click: $root.goToTag"></a>
+                    <a href data-bind="tag: $data, click: $root.goToTag"></a>
                 </div>
 
 

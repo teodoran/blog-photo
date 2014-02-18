@@ -28,3 +28,17 @@ ko.bindingHandlers.markdown = {
         }
     }
 };
+
+ko.bindingHandlers.tag = {
+    init: function () {},
+    update: function(element, valueAccessor) {
+        "use strict";
+        var tag = ko.unwrap(valueAccessor());
+
+        if (_.contains(["steffenp", "magnuskiro", "teodoran"], tag)) {
+            $(element).text("@" + tag + " ");
+        } else{
+            $(element).text("#" + tag + " ");            
+        };
+    }
+};
