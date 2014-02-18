@@ -39,53 +39,65 @@
         </div>
     </div>
 
-    <div class="container">
-        <div data-bind="if: showPosts">
-            <div data-bind='foreach: choosenPosts'>
-                <div data-bind='markdown: body'></div>
-
-                <div class="pull-right" data-bind="if: $root.isAdmin">
-                    <button class="btn btn-primary" data-bind="click: $parent.editPost">Edit</button>
-                    <button class="btn btn-primary" data-bind="click: $parent.deletePost">Delete</button>
+    <div class="container-fluid">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <div id="floater"></div>
+                <div id="sidebarcontent">
+                    <h3>KodeKollektivet</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li data-bind="ifnot: isAdmin"><a href="/auth/google">Sign in</a></li>
+                        <li data-bind="if: isAdmin"><a href="/#/new">New</a></li>
+                        <li data-bind="if: isAdmin"><a href="/logout">Log out</a></li>
+                    </ul>
                 </div>
-
-                <div data-bind="foreach: tags">
-                    <a href data-bind="text: '#' + $data, click: $root.goToTag"></a>
-                </div>
-
-
-                <hr class="featurette-divider">
+                <footer>
+                    <p> KodeKollektivet.no <br>
+                        <a href="http://twitter.com/magnuskiro">@magnuskiro</a> <br>
+                        <a href="http://twitter.com/spohner">@spohner</a> <br>
+                        <a href="http://twitter.com/teodoran/">@teodoran</a>
+                    </p>
+                    <a href="https://github.com/teodoran/blog-photo" ><img src="img/github_icon.png" class="pull-left"></img></a>
+                </footer>
             </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div data-bind="if: showPosts">
+                    <div data-bind='foreach: choosenPosts'>
+                        <div data-bind='markdown: body'></div>
+
+                        <div class="pull-right" data-bind="if: $root.isAdmin">
+                            <button class="btn btn-primary" data-bind="click: $parent.editPost">Edit</button>
+                            <button class="btn btn-primary" data-bind="click: $parent.deletePost">Delete</button>
+                        </div>
+
+                        <div data-bind="foreach: tags">
+                            <a href data-bind="text: '#' + $data, click: $root.goToTag"></a>
+                        </div>
+
+
+                        <hr class="featurette-divider">
+                    </div>
+                </div>
+
+                <div style="display:none" data-bind="visible: !showPosts()">
+                    <div class="row">
+                        <div class="col-xs-6" style="margin-top:25px;">
+                            <textarea class="form-control" rows="40" data-bind="value: editBody, valueUpdate: 'afterkeydown'" placeholder="Markdown"></textarea>
+
+                            <div class="col-md-10" style="padding:0px;">
+                                <input class="form-control" data-bind="value: editTagsList" style="margin-top:20px;" placeholder="Slashtags">
+                            </div>
+                            <div class="col-md-2" style="padding:0px;">
+                                <button class="btn btn-primary pull-right" style="margin-top:20px;" data-bind="click: savePost">Save</button>
+                            </div>
+                        </div>
+                        <div class="col-xs-6" data-bind="markdown: editBody">
+                        </div>
+                    </div>
+
+                    <hr class="featurette-divider">
+                </div>
         </div>
 
-        <div style="display:none" data-bind="visible: !showPosts()">
-            <div class="row">
-                <div class="col-xs-6" style="margin-top:25px;">
-                    <textarea class="form-control" rows="40" data-bind="value: editBody, valueUpdate: 'afterkeydown'" placeholder="Markdown"></textarea>
-
-                    <div class="col-md-10" style="padding:0px;">
-                        <input class="form-control" data-bind="value: editTagsList" style="margin-top:20px;" placeholder="Slashtags">
-                    </div>
-                    <div class="col-md-2" style="padding:0px;">
-                        <button class="btn btn-primary pull-right" style="margin-top:20px;" data-bind="click: savePost">Save</button>
-                    </div>
-                </div>
-                <div class="col-xs-6" data-bind="markdown: editBody">
-                </div>
-            </div>
-
-            <hr class="featurette-divider">
-        </div>
-
-        <footer>
-            <p class="pull-right"><a href="https://github.com/teodoran/blog-photo">GitHub</a></p>
-            <p>
-                KodeKollektivet.no &middot;
-                <a href="http://folk.ntnu.no/steffenp/">Steffen Pöhner</a> &middot;
-                <a href="https://twitter.com/magnuskiro">Magnus Kirø</a> &middot;
-                <a href="http://folk.ntnu.no/teodoran/">Teodor Elstad</a>
-            </p>
-        </footer>
     </div>
 
     <script type='text/javascript' src="/marked/lib/marked.js"></script>
