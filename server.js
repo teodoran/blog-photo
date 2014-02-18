@@ -20,7 +20,8 @@ var express = require("express"),
     trustedUsers = [
         "https://www.google.com/accounts/o8/id?id=AItOawkB_ny6pA-IpZyZw1gATOJ2lk61yOdNE-k",
         "https://www.google.com/accounts/o8/id?id=AItOawkSPNcAh4w9gqvpEG6F7W9Bx5kNEGusey4",
-        "https://www.google.com/accounts/o8/id?id=AItOawmny2ue1nyD2TgVyWQNMAuCFeke86F1WjQ"
+        "https://www.google.com/accounts/o8/id?id=AItOawmny2ue1nyD2TgVyWQNMAuCFeke86F1WjQ",
+        "https://www.google.com/accounts/o8/id?id=AItOawmZZtFm0H9HjS9SABlpSnoD1waGdZwNGRE"
     ],
 
     app = express(),

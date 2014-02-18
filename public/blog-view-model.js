@@ -11,7 +11,10 @@ var BLOG = this.BLOG || {};
 (function (B) {
     "use strict";
     B.blogViewModel = function() {
-        var self = this;
+        var self = this,
+            isAuthor = function (tag) {
+                return _.contains(["steffenp", "magnuskiro", "teodoran"], tag);
+            };
 
         // contains posts in current view
         self.choosenPosts = ko.observable();
@@ -29,10 +32,15 @@ var BLOG = this.BLOG || {};
 
         self.editTagsList = ko.computed({
             read: function () {
-                return "#" + self.editTags().join(" #");
+                return _.reduce(self.editTags(), function(memo, tag) {
+                    if (isAuthor(tag)) {
+                        return memo + " @" + tag;
+                    }
+                    return memo + " #" + tag;
+                }, "").trim();
             },
             write: function (value) {
-                var tagsList = _.map(value.split("#"), function (tagString) {
+                var tagsList = _.map(value.split(/[#,@]/), function (tagString) {
                     return tagString.trim();
                 });
                 self.editTags(_.reject(tagsList, function (tag) {

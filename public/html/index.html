@@ -64,10 +64,20 @@
                     <div data-bind='foreach: choosenPosts'>
                         <div data-bind='markdown: body'></div>
 
+<<<<<<< HEAD
                         <div class="pull-right" data-bind="if: $root.isAdmin">
                             <button class="btn btn-primary" data-bind="click: $parent.editPost">Edit</button>
                             <button class="btn btn-primary" data-bind="click: $parent.deletePost">Delete</button>
                         </div>
+=======
+                <div class="pull-right">
+                    <div data-bind="text: created.split('T')[0]"></div>
+                </div>
+
+                <div data-bind="foreach: tags">
+                    <a href data-bind="tag: $data, click: $root.goToTag"></a>
+                </div>
+>>>>>>> 99e6469cfaad2e085a8f66ef8f43e7dc0229a1f9
 
                         <div data-bind="foreach: tags">
                             <a href data-bind="text: '#' + $data, click: $root.goToTag"></a>

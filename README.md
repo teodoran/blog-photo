@@ -89,3 +89,21 @@ The /public folder is structured in as following:
 * /html contains site specific html files.
 * /img contains site graphics. Not meant as a location for images related to blogpost content.
 * /lib contains pre-compiled client-side libraries, configuration and css.
+
+
+Heroku setup
+------------
+
+First install the [Heroku toolbelt](https://devcenter.heroku.com/articles/quickstart#step-2-install-the-heroku-toolbelt).
+
+Then you have to link the git repository to the Heroku deployment server using:
+
+```
+git remote add heroku git@heroku.com:kodekollektivet.git
+```
+
+Now you can deploy the site to heroku with:
+
+```
+git push heroku master
+```
