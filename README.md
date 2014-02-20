@@ -107,3 +107,14 @@ Now you can deploy the site to heroku with:
 ```
 git push heroku master
 ```
+
+
+Updating dependencies
+---------------------
+
+Sometimes the dependencies to external libraries will be updated, to ensure that the site is using the most recent versions. Developers will then have to update their development repositories. This can be done by running:
+
+```
+npm update
+bower update
+```
