@@ -83,6 +83,23 @@ app.get("/posts", function (req, res) {
     var q = url.parse(req.url, true).query;
 
     if (q.tag) {
+        provider.allPublishedPosts(function (articles) {
+            res.json(_.filter(articles, function(post) { return _.contains(post.tags, q.tag); }));
+        });
+    } else if (q.id) {
+        provider.allPublishedPosts(function (articles) {
+            res.json(_.find(articles, function(post) { return post.id === parseInt(q.id, 10); }));
+        });
+    } else {
+        res.json({errormessage: "no JSON for you!"});
+    }
+});
+
+// Secure route for getting both unpublished and published posts.
+app.get("/unpublished", ensureAuthenticated, function (req, res) {
+    var q = url.parse(req.url, true).query;
+
+    if (q.tag) {
         provider.allPosts(function (articles) {
             res.json(_.filter(articles, function(post) { return _.contains(post.tags, q.tag); }));
         });
@@ -95,15 +112,25 @@ app.get("/posts", function (req, res) {
     }
 });
 
-// Secure routes for post deletion and save
-app.post('/posts/delete', ensureAuthenticated, function (req, res) {
-    provider.deletePost(req.body);
-    res.send("200");
-});
-
+// Secure routes for post deletion, publish, unpublish and save
 app.post('/posts/save', ensureAuthenticated, function (req, res) {
     provider.savePost(req.body);
     res.send("201");
+});
+
+app.post('/posts/publish', ensureAuthenticated, function (req, res) {
+    provider.publishPost(req.body);
+    res.send("200");
+});
+
+app.post('/posts/unpublish', ensureAuthenticated, function (req, res) {
+    provider.unpublishPost(req.body);
+    res.send("200");
+});
+
+app.post('/posts/delete', ensureAuthenticated, function (req, res) {
+    provider.deletePost(req.body);
+    res.send("200");
 });
 
 // Routes required by Google OAuth

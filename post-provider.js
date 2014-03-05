@@ -12,9 +12,13 @@ var PostProvider = function () {
         postSchema = mongoose.Schema({
             body: String,
             tags: Array,
-            created:  {
+            created: {
                 type: Date,
                 default: Date.now
+            },
+            published: {
+                type: Boolean,
+                default: false
             }
         });
 
@@ -27,7 +31,19 @@ var PostProvider = function () {
 PostProvider.prototype.allPosts = function (callback) {
     var self = this;
 
-    self.Post.find({}).sort({created: -1}).exec(function (err, posts) {
+    self.Post.find().sort({created: -1}).exec(function (err, posts) {
+        if (!err) {
+            callback(posts);
+        } else {
+            callback(err);
+        }
+    });
+};
+
+PostProvider.prototype.allPublishedPosts = function (callback) {
+    var self = this;
+
+    self.Post.find({published: true}).sort({created: -1}).exec(function (err, posts) {
         if (!err) {
             callback(posts);
         } else {
@@ -43,6 +59,26 @@ PostProvider.prototype.savePost = function (post) {
     newPost.save(function (err, newPost) {
         if (err) {
             console.log(err + newPost.title);
+        }
+    });
+};
+
+PostProvider.prototype.publishPost = function (post) {
+    var self = this;
+
+    self.Post.findByIdAndUpdate(post._id, { published: true }, function (err) {
+        if (err) {
+            console.log(err);
+        }
+    });
+};
+
+PostProvider.prototype.unpublishPost = function (post) {
+    var self = this;
+
+    self.Post.findByIdAndUpdate(post._id, { published: false }, function (err) {
+        if (err) {
+            console.log(err);
         }
     });
 };

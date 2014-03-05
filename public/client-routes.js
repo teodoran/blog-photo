@@ -25,7 +25,7 @@ var BLOG = this.BLOG || {};
             this.get('#/admin/:tag', function () {
                 viewModel.showPosts(true);
                 viewModel.isAdmin(true);
-                $.get("/posts", { tag: this.params.tag || "all" }, viewModel.choosenPosts);
+                $.get("/unpublished", { tag: this.params.tag || "all" }, viewModel.choosenPosts);
             });
 
             this.get('#/edit/:postTitle', function() {

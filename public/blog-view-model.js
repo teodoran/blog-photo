@@ -77,19 +77,6 @@ var BLOG = this.BLOG || {};
             location.hash = '/edit/' + post._id;
         };
 
-        self.deletePost = function (post) {
-            self.choosenPosts(_.filter(self.choosenPosts(), function (oldPost) {
-                return oldPost._id !== post._id;
-            }));
-
-            $.ajax({
-                type: 'POST',
-                data: JSON.stringify(post),
-                contentType: 'application/json',
-                url: '/posts/delete'
-            });
-        };
-
         self.savePost = function () {
             var newPost = {
                 body: self.editBody(),
@@ -112,6 +99,51 @@ var BLOG = this.BLOG || {};
 
             self.clearEdit();
             self.goToTag("all");
+        };
+
+        self.publishPost = function (post) {
+            self.choosenPosts(_.map(self.choosenPosts(), function (oldPost) {
+                if (oldPost._id !== post._id) {
+                    oldPost.published = true;
+                }
+                return oldPost;
+            }));
+
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(post),
+                contentType: 'application/json',
+                url: '/posts/publish'
+            });
+        };
+
+        self.unpublishPost = function (post) {
+            self.choosenPosts(_.map(self.choosenPosts(), function (oldPost) {
+                if (oldPost._id !== post._id) {
+                    oldPost.published = false;
+                }
+                return oldPost;
+            }));
+
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(post),
+                contentType: 'application/json',
+                url: '/posts/unpublish'
+            });
+        };
+
+        self.deletePost = function (post) {
+            self.choosenPosts(_.filter(self.choosenPosts(), function (oldPost) {
+                return oldPost._id !== post._id;
+            }));
+
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(post),
+                contentType: 'application/json',
+                url: '/posts/delete'
+            });
         };
     };
 }(BLOG));
