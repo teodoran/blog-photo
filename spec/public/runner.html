@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Client-Side Tests</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="../../node_modules/mocha/mocha.css"/>
+
+        <!-- Load all libraries -->
+        <script type='text/javascript' src='../../public/lib/knockout-latest.min.js'></script>
+        <script type='text/javascript' src='../../bower_components/jquery/dist/jquery.min.js'></script>
+        <script type='text/javascript' src='../../bower_components/underscore/underscore-min.js'></script>
+        <script type='text/javascript' src='../../bower_components/sammy/lib/min/sammy-latest.min.js'></script>
+
+        <!-- Load all client side files to test -->
+        <script type='text/javascript' src='../../public/post.js'></script>
+
+        <!-- Load and setup mocha -->
+        <script src="../../node_modules/should/should.js"></script>
+        <script src="../../node_modules/mocha/mocha.js"></script>
+        <script>mocha.setup('bdd')</script>
+
+        <!-- Load all spec files -->
+        <script src="./post-spec.js"></script>
+        <script>
+        onload = function(){
+            var runner = mocha.run();
+            //////////
+            // Options
+            // runner.globals(['foo', 'bar', 'baz']);
+            // runner.on('test end', function(test){
+            //   console.log(test.fullTitle());
+            // });
+        };
+        </script>
+    </head>
+    <body>
+        <div id="mocha">
+            <h1>Client-side tests@<a href="http://www.kodekollektivet.no/">kodekollektivet.no</a></h1>
+        </div>
+    </body>
+</html>

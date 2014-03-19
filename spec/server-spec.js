@@ -1,13 +1,14 @@
 /*jslint node: true*/
 /*global describe, it*/
 
-var assert = require("assert");
+var should = require("should");
 
 describe('server', function() {
     "use strict";
     describe('server side code', function() {
         it('should not fail', function() {
-            assert.equal(3, 3);
+            var three = 3;
+            three.should.equal(3);
         });
     });
 });

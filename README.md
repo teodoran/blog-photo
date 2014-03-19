@@ -23,7 +23,7 @@ Launch the site at localhost with:
 npm start
 ```
 
-Run all tests with:
+Run all server-side tests with:
 
 ```
 npm test
@@ -34,6 +34,8 @@ A more detailed test breakdown can be shown whit:
 ```
 npm run-script spec
 ```
+
+To run the client side tests, simply open ```/blog-photo/spec/public/runner.html``` in your favorite browser.
 
 
 ### Installation guides

@@ -4,7 +4,8 @@
   "description": "A photo blog for Jon",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --reporter nyan $(find spec/ -iname '*.js')",
+    "test": "mocha --reporter nyan $(find spec/*.js)",
+    "spec": "mocha --reporter spec $(find spec/*.js)",
     "start": "node server.js",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
