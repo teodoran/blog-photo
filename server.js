@@ -56,7 +56,9 @@ passport.use(new GoogleStrategy({
 // General express server config
 
 app.configure(function() {
-    app.use(express.bodyParser());
+    app.use(express.json());
+    app.use(express.urlencoded());
+
     app.use(express.cookieParser());
     app.use(express.session({ secret: String(crypto.randomBytes(256)) }));
 
