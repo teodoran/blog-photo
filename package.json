@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --reporter nyan $(find spec/ -iname '*.js')",
-    "spec": "mocha --reporter spec $(find spec/ -iname '*.js')",
     "start": "node server.js",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
