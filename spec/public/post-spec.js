@@ -1,4 +1,4 @@
-/*jslint node: true*/
+/*jslint node: true, nomen: true*/
 /*global describe, it, beforeEach, BLOG*/
 // Collision between jslint and structure of shouldjs. Ignore "Expected an assignment or function call and instead saw an expression."
 
@@ -40,6 +40,10 @@ describe('post class', function() {
             p.published().should.be.type('boolean');
         });
 
+        it('should have a id', function() {
+            p.id.should.be.type('string');
+        });
+
         it('should initalize post.body from json', function() {
             p.body().should.equal(json.body);
         });
@@ -56,7 +60,11 @@ describe('post class', function() {
             p.created().should.equal(json.created);
         });
 
-        it('should return formatted time', function(){
+        it('should initalize post.id from json ', function() {
+            p.id.should.equal(json._id);
+        });
+
+        it('should return formatted time', function() {
             p.getTime().should.equal('2014-02-18');
         });
 

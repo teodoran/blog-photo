@@ -1,3 +1,4 @@
+/*jslint nomen:true*/
 /*global ko*/
 
 var BLOG = this.BLOG || {};
@@ -7,6 +8,7 @@ var BLOG = this.BLOG || {};
     B.post = function(json) {
         var self = this;
 
+        self.id = json._id || '';
         self.body = ko.observable(json.body || '');
         self.tags = ko.observableArray(json.tags || []);
         self.created = ko.observable(json.created || '');

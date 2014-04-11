@@ -90,16 +90,16 @@
             <div style="display:none" data-bind="visible: !showPosts()">
                 <div class="row">
                     <div class="col-xs-6" style="margin-top:25px;">
-                        <textarea class="form-control" rows="40" data-bind="value: editBody, valueUpdate: 'afterkeydown'" placeholder="Markdown"></textarea>
+                        <textarea class="form-control" rows="40" data-bind="value: currentPost.body, valueUpdate: 'afterkeydown'" placeholder="Markdown"></textarea>
 
                         <div class="col-md-10" style="padding:0px;">
-                            <input class="form-control" data-bind="value: editTagsList" style="margin-top:20px;" placeholder="Slashtags">
+                            <input class="form-control" data-bind="value: currentPost.tags" style="margin-top:20px;" placeholder="Slashtags">
                         </div>
                         <div class="col-md-2" style="padding:0px;">
                             <button class="btn btn-primary pull-right" style="margin-top:20px;" data-bind="click: savePost">Save</button>
                         </div>
                     </div>
-                    <div class="col-xs-6" data-bind="markdown: editBody">
+                    <div class="col-xs-6" data-bind="markdown: currentPost.body">
                     </div>
                 </div>
 
