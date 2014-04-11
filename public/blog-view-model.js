@@ -13,8 +13,11 @@ var BLOG = this.BLOG || {};
     B.blogViewModel = function() {
         var self = this;
 
-        // contains posts in current view
+        // Contains posts in current view
         self.choosenPosts = ko.observable();
+
+        // Contains categories
+        self.categories = ko.observableArray(['javascript', 'kart', 'nodejs', 'funksjonell programmering', 'CUDA']);
 
         // Variable to control if admin options are shown
         self.isAdmin = ko.observable(false);

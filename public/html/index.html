@@ -44,7 +44,10 @@
         <div class="col-sm-3 col-md-2 sidebar">
             <div id="floater"></div>
             <div id="sidebarcontent">
-                <h3>KodeKollektivet</h3>
+                <a href="/"><h3>KodeKollektivet</h3></a>
+                <ul class="nav nav-pills nav-stacked" data-bind="foreach: categories">
+                    <li><a href data-bind="tag: $data, click: $root.goToTag"></a></li>
+                </ul>
                 <ul class="nav nav-pills nav-stacked">
                     <li data-bind="ifnot: isAdmin"><a href="/auth/google">Sign in</a></li>
                     <li data-bind="if: isAdmin"><a href="/#/new">New</a></li>
