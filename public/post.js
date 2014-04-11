@@ -7,9 +7,9 @@ var BLOG = this.BLOG || {};
     "use strict";
     B.post = function(json) {
         var self = this,
-            isAuthor = function (tag) {
-                return _.contains(["steffenp", "magnuskiro", "teodoran"], tag);
-            };
+        isAuthor = function (tag) {
+            return _.contains(["steffenp", "magnuskiro", "teodoran"], tag);
+        };
 
         self.id = json._id || null;
         self.body = ko.observable(json.body || '');
@@ -49,5 +49,23 @@ var BLOG = this.BLOG || {};
                 }));
             }
         });
+        
+        self.delete = function(){
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(self.json()),
+                contentType: 'application/json',
+                url: '/posts/delete'
+            });
+        };
+        
+        self.save = function(){
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(self.json()),
+                contentType: 'application/json',
+                url: '/posts/save'
+            });
+        };
     };
 }(BLOG));

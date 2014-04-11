@@ -51,12 +51,7 @@ var BLOG = this.BLOG || {};
                 self.deletePost(self.currentPost());
             }
 
-            $.ajax({
-                type: 'POST',
-                data: JSON.stringify(self.currentPost().json()),
-                contentType: 'application/json',
-                url: '/posts/save'
-            });
+            self.currentPost().save();
 
             self.clearEdit();
             self.goToTag("all");
@@ -95,18 +90,14 @@ var BLOG = this.BLOG || {};
         };
 
         self.deletePost = function (post) {
-            // console.log(post.json);
 
             self.choosenPosts(_.filter(self.choosenPosts(), function (oldPost) {
                 return oldPost.id !== post.id;
             }));
 
-            $.ajax({
-                type: 'POST',
-                data: JSON.stringify(post.json()),
-                contentType: 'application/json',
-                url: '/posts/delete'
-            });
+            post.delete();
+
+
         };
     };
 }(BLOG));
