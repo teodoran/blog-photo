@@ -1,5 +1,5 @@
 {
-  "name": "jon-photo",
+  "name": "kodekollektivet",
   "version": "0.0.0",
   "description": "A photo blog for Jon",
   "main": "server.js",
@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/teodoran/blog-photo"
+    "url": "https://github.com/teodoran/kodekollektivet"
   },
   "keywords": [
     "blog",
     "photo"
   ],
-  "author": "Teodor Ande Elstad <teodoran@stud.ntnu.no>",
+  "authors": ["Teodor Ande Elstad <teodoran@stud.ntnu.no>", "Steffen Pøhner Henriksen <steffen@pohnerhenriksen.com>", "Magnus Kirø <magnuskiro@gmail.com>"],
   "license": "MIT",
   "dependencies": {
     "express": "~3.4.7",
