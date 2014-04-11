@@ -17,18 +17,25 @@
     "blog",
     "photo"
   ],
-  "authors": ["Teodor Ande Elstad <teodoran@stud.ntnu.no>", "Steffen Pøhner Henriksen <steffen@pohnerhenriksen.com>", "Magnus Kirø <magnuskiro@gmail.com>"],
+  "authors": [
+    "Teodor Ande Elstad <teodoran@stud.ntnu.no>",
+    "Steffen Pøhner Henriksen <steffen@pohnerhenriksen.com>",
+    "Magnus Kirø <magnuskiro@gmail.com>"
+  ],
   "license": "MIT",
   "dependencies": {
-    "express": "~3.4.7",
-    "mongoose": "~3.8.7",
-    "underscore": "~1.6.0",
-    "passport": "~0.2.0",
-    "passport-google": "~0.3.0",
-    "bower": "~1.2.8"
+    "express": "",
+    "mongoose": "",
+    "underscore": "",
+    "passport": "",
+    "passport-google": "",
+    "bower": "",
+    "body-parser": "",
+    "cookie-parser": "",
+    "express-session": ""
   },
   "devDependencies": {
-    "mocha": "~1.17.1",
-    "should": "~3.1.4"
+    "mocha": "",
+    "should": ""
   }
 }

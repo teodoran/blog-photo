@@ -2,6 +2,9 @@
 
 "use strict";
 var express = require("express"),
+    bodyParser = require("body-parser"),
+    cookieParser = require("cookie-parser"),
+    session = require("express-session"),
     url = require('url'),
     _ = require("underscore"),
 
@@ -55,22 +58,20 @@ passport.use(new GoogleStrategy({
 /////////////////////////////////
 // General express server config
 
-app.configure(function() {
-    app.use(express.json());
-    app.use(express.urlencoded());
 
-    app.use(express.cookieParser());
-    app.use(express.session({ secret: String(crypto.randomBytes(256)) }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
-    app.use(express.static(__dirname + "/public"));
-    app.use(express.static(__dirname + "/images"));
-    app.use(express.static(__dirname + "/bower_components"));
+app.use(cookieParser());
+app.use(session({ secret: String(crypto.randomBytes(256)) }));
 
-    app.use(passport.initialize());
-    app.use(passport.session());
+app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/images"));
+app.use(express.static(__dirname + "/bower_components"));
 
-    app.use(app.router);
-});
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 /////////////////
 // Server routes

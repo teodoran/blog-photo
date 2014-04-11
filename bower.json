@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "homepage": "https://github.com/teodoran/blog-photo",
   "authors": [
-    "Teodor Ande Elstad <teodoran@stud.ntnu.no>"
+    "Teodor Ande Elstad <teodoran@stud.ntnu.no>",
+    "Steffen Pøhner Henriksen <steffen@pohnerhenriksen.com>",
+    "Magnus Kirø <magnuskiro@gmail.com>"
   ],
   "description": "A blog",
   "main": "server.js",
