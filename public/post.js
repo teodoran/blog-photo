@@ -1,5 +1,5 @@
 /*jslint nomen:true*/
-/*global ko*/
+/*global ko, _, $*/
 
 var BLOG = this.BLOG || {};
 
@@ -7,29 +7,15 @@ var BLOG = this.BLOG || {};
     "use strict";
     B.post = function(json) {
         var self = this,
-        isAuthor = function (tag) {
-            return _.contains(["steffenp", "magnuskiro", "teodoran"], tag);
-        };
+            isAuthor = function (tag) {
+                return _.contains(["steffenp", "magnuskiro", "teodoran"], tag);
+            };
 
         self.id = json._id || null;
         self.body = ko.observable(json.body || '');
         self.tags = ko.observableArray(json.tags || ['all']);
         self.created = ko.observable(json.created || new Date());
         self.published = ko.observable(json.published || false);
-
-        self.getTime = function() {
-            return self.created().split('T')[0];
-        };
-
-        self.json = function () {
-            return {
-                "_id": self.id,
-                "body": self.body(),
-                "tags": self.tags(),
-                "created": self.created(),
-                "published": self.published()
-            };
-        };
 
         self.editTagsList = ko.computed({
             read: function () {
@@ -49,8 +35,22 @@ var BLOG = this.BLOG || {};
                 }));
             }
         });
-        
-        self.delete = function(){
+
+        self.getTime = function() {
+            return self.created().split('T')[0];
+        };
+
+        self.json = function () {
+            return {
+                "_id": self.id,
+                "body": self.body(),
+                "tags": self.tags(),
+                "created": self.created(),
+                "published": self.published()
+            };
+        };
+
+        self.remove = function() {
             $.ajax({
                 type: 'POST',
                 data: JSON.stringify(self.json()),
@@ -58,8 +58,8 @@ var BLOG = this.BLOG || {};
                 url: '/posts/delete'
             });
         };
-        
-        self.save = function(){
+
+        self.save = function() {
             $.ajax({
                 type: 'POST',
                 data: JSON.stringify(self.json()),

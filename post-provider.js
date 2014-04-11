@@ -56,7 +56,7 @@ PostProvider.prototype.savePost = function (post) {
     var self = this,
         newPost = new self.Post(post);
 
-    newPost.save(function (err, newPost) {
+    newPost.save(function (err) {
         if (err) {
             console.log(err);
         }

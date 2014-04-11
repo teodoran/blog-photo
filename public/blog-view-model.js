@@ -58,46 +58,23 @@ var BLOG = this.BLOG || {};
         };
 
         self.publishPost = function (post) {
-            self.choosenPosts(_.map(self.choosenPosts(), function (oldPost) {
-                if (oldPost._id !== post._id) {
-                    oldPost.published = true;
-                }
-                return oldPost;
-            }));
-
-            $.ajax({
-                type: 'POST',
-                data: JSON.stringify(post),
-                contentType: 'application/json',
-                url: '/posts/publish'
-            });
+            post.published(true);
+            post.remove();
+            post.save();
         };
 
         self.unpublishPost = function (post) {
-            self.choosenPosts(_.map(self.choosenPosts(), function (oldPost) {
-                if (oldPost._id !== post._id) {
-                    oldPost.published = false;
-                }
-                return oldPost;
-            }));
-
-            $.ajax({
-                type: 'POST',
-                data: JSON.stringify(post),
-                contentType: 'application/json',
-                url: '/posts/unpublish'
-            });
+            post.published(false);
+            post.remove();
+            post.save();
         };
 
         self.deletePost = function (post) {
-
             self.choosenPosts(_.filter(self.choosenPosts(), function (oldPost) {
                 return oldPost.id !== post.id;
             }));
 
-            post.delete();
-
-
+            post.remove();
         };
     };
 }(BLOG));
