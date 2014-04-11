@@ -25,7 +25,7 @@ var BLOG = this.BLOG || {};
         self.showPosts = ko.observable(true);
 
         // Variables to bind to the new/edit form
-        self.currentPost = new BLOG.post('');
+        self.currentPost = ko.observable(new BLOG.post(''));
 
         self.editBody = ko.observable("");
         self.editTags = ko.observable(["all"]);
@@ -61,14 +61,7 @@ var BLOG = this.BLOG || {};
 
         // Helper function to clear the new/edit variables
         self.clearEdit = function () {
-            self.currentPost = new BLOG.post('');
-
-            // console.log(self.currentPost());
-
-            self.editBody("");
-            self.editTags(["all"]);
-            self.editId = null;
-            self.editCreated = null;
+            self.currentPost(new BLOG.post(''));
         };
 
         self.newPost = function() {
@@ -76,11 +69,8 @@ var BLOG = this.BLOG || {};
         };
 
         self.editPost = function (post) {
-            self.editBody(post.body);
-            self.editTags(post.tags);
-            self.editId = post._id;
-            self.editCreated = post.created;
-            location.hash = '/edit/' + post._id;
+            self.currentPost(post);
+            location.hash = '/edit/' + post.id;
         };
 
         self.savePost = function () {
