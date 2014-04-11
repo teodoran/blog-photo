@@ -76,7 +76,7 @@
                         <a data-bind="click: $parent.deletePost"> Delete</a>
                     </div>
                     <div class="pull-right">
-                        <div data-bind="text: created.split('T')[0]"></div>
+                        <div data-bind="text: created().split('T')[0]"></div>
                     </div>
 
                     <div data-bind="foreach: tags">

@@ -1,4 +1,5 @@
-/*global $, Sammy*/
+/*jslint nomen:true*/
+/*global $, Sammy, _*/
 
 var BLOG = this.BLOG || {};
 
@@ -25,7 +26,11 @@ var BLOG = this.BLOG || {};
             this.get('#/admin/:tag', function () {
                 viewModel.showPosts(true);
                 viewModel.isAdmin(true);
-                $.get("/unpublished", { tag: this.params.tag || "all" }, viewModel.choosenPosts);
+                $.get("/unpublished", { tag: this.params.tag || "all" }, function (json) {
+                    viewModel.choosenPosts(_.map(json, function (json) {
+                        return new BLOG.post(json);
+                    }));
+                });
             });
 
             this.get('#/edit/:postTitle', function() {
@@ -36,7 +41,11 @@ var BLOG = this.BLOG || {};
             this.get('#/:tag', function() {
                 viewModel.showPosts(true);
                 viewModel.isAdmin(false);
-                $.get("/posts", { tag: this.params.tag || "all" }, viewModel.choosenPosts);
+                $.get("/posts", { tag: this.params.tag || "all" }, function (json) {
+                    viewModel.choosenPosts(_.map(json, function (json) {
+                        return new BLOG.post(json);
+                    }));
+                });
             });
         });
 
