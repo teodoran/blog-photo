@@ -11,14 +11,24 @@ var BLOG = this.BLOG || {};
                 return _.contains(["steffenp", "magnuskiro", "teodoran"], tag);
             };
 
-        self.id = json._id || '';
+        self.id = json._id || null;
         self.body = ko.observable(json.body || '');
-        self.tags = ko.observableArray(json.tags || []);
-        self.created = ko.observable(json.created || '');
+        self.tags = ko.observableArray(json.tags || ['all']);
+        self.created = ko.observable(json.created || new Date());
         self.published = ko.observable(json.published || false);
 
         self.getTime = function() {
             return self.created().split('T')[0];
+        };
+
+        self.json = function () {
+            return {
+                "_id": self.id,
+                "body": self.body(),
+                "tags": self.tags(),
+                "created": self.created(),
+                "published": self.published()
+            };
         };
 
         self.editTagsList = ko.computed({

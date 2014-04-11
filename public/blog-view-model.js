@@ -11,10 +11,7 @@ var BLOG = this.BLOG || {};
 (function (B) {
     "use strict";
     B.blogViewModel = function() {
-        var self = this,
-            isAuthor = function (tag) {
-                return _.contains(["steffenp", "magnuskiro", "teodoran"], tag);
-            };
+        var self = this;
 
         // contains posts in current view
         self.choosenPosts = ko.observable();
@@ -26,30 +23,6 @@ var BLOG = this.BLOG || {};
 
         // Variables to bind to the new/edit form
         self.currentPost = ko.observable(new BLOG.post(''));
-
-        self.editBody = ko.observable("");
-        self.editTags = ko.observable(["all"]);
-        self.editCreated = null;
-        self.editId = null;
-
-        self.editTagsList = ko.computed({
-            read: function () {
-                return _.reduce(self.editTags(), function(memo, tag) {
-                    if (isAuthor(tag)) {
-                        return memo + " @" + tag;
-                    }
-                    return memo + " #" + tag;
-                }, "").trim();
-            },
-            write: function (value) {
-                var tagsList = _.map(value.split(/[#,@]/), function (tagString) {
-                    return tagString.trim();
-                });
-                self.editTags(_.reject(tagsList, function (tag) {
-                    return tag === "";
-                }));
-            }
-        });
 
         self.goToTag = function(tag) {
             if (self.isAdmin()) {
@@ -74,21 +47,13 @@ var BLOG = this.BLOG || {};
         };
 
         self.savePost = function () {
-            var newPost = {
-                body: self.editBody(),
-                tags: self.editTags()
-            };
-
-            // If a save is done on a edited post. Delete old post and save new edit.
-            if (self.editId) {
-                newPost._id = self.editId;
-                newPost.created = self.editCreated;
-                self.deletePost(newPost);
+            if (self.currentPost().id !== null) {
+                self.deletePost(self.currentPost());
             }
 
             $.ajax({
                 type: 'POST',
-                data: JSON.stringify(newPost),
+                data: JSON.stringify(self.currentPost().json()),
                 contentType: 'application/json',
                 url: '/posts/save'
             });
@@ -130,13 +95,15 @@ var BLOG = this.BLOG || {};
         };
 
         self.deletePost = function (post) {
+            // console.log(post.json);
+
             self.choosenPosts(_.filter(self.choosenPosts(), function (oldPost) {
-                return oldPost._id !== post._id;
+                return oldPost.id !== post.id;
             }));
 
             $.ajax({
                 type: 'POST',
-                data: JSON.stringify(post),
+                data: JSON.stringify(post.json()),
                 contentType: 'application/json',
                 url: '/posts/delete'
             });

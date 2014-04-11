@@ -58,7 +58,7 @@ PostProvider.prototype.savePost = function (post) {
 
     newPost.save(function (err, newPost) {
         if (err) {
-            console.log(err + newPost.title);
+            console.log(err);
         }
     });
 };

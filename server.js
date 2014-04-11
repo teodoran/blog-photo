@@ -117,6 +117,7 @@ app.get("/unpublished", ensureAuthenticated, function (req, res) {
 
 // Secure routes for post deletion, publish, unpublish and save
 app.post('/posts/save', ensureAuthenticated, function (req, res) {
+    console.log(req.body);
     provider.savePost(req.body);
     res.send("201");
 });
