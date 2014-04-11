@@ -56,5 +56,9 @@ describe('post class', function() {
             p.created().should.equal(json.created);
         });
 
+        it('should return formatted time', function(){
+            p.getTime().should.equal('2014-02-18');
+        });
+
     });
 });

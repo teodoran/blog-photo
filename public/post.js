@@ -11,5 +11,9 @@ var BLOG = this.BLOG || {};
         self.tags = ko.observableArray(json.tags || []);
         self.created = ko.observable(json.created || '');
         self.published = ko.observable(json.published || false);
+
+        self.getTime = function() {
+            return self.created().split('T')[0];
+        };
     };
 }(BLOG));
