@@ -1,3 +1,5 @@
+/*global ko*/
+
 var BLOG = this.BLOG || {};
 
 (function (B) {
@@ -5,9 +7,9 @@ var BLOG = this.BLOG || {};
     B.post = function(json) {
         var self = this;
 
-        self.body = json.body || '';
-        self.tags = json.tags || [];
-        self.created = json.created || '';
-        self.published = json.published || false;
+        self.body = ko.observable(json.body || '');
+        self.tags = ko.observableArray(json.tags || []);
+        self.created = ko.observable(json.created || '');
+        self.published = ko.observable(json.published || false);
     };
 }(BLOG));
