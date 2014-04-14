@@ -98,6 +98,12 @@ app.get("/posts", function (req, res) {
     }
 });
 
+app.get("/tags/top", function (req, res) {
+    provider.topTags(function (tags) {
+        res.json(tags);
+    });
+});
+
 // Secure route for getting both unpublished and published posts.
 app.get("/unpublished", ensureAuthenticated, function (req, res) {
     var q = url.parse(req.url, true).query;

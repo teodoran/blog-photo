@@ -17,7 +17,8 @@ var BLOG = this.BLOG || {};
         self.choosenPosts = ko.observable();
 
         // Contains categories
-        self.categories = ko.observableArray(['javascript', 'kart', 'nodejs', 'funksjonell programmering', 'CUDA']);
+        self.categories = ko.observableArray();
+        $.get("/tags/top", self.categories);
 
         // Variable to control if admin options are shown
         self.isAdmin = ko.observable(false);
