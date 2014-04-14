@@ -8,7 +8,7 @@ var BLOG = this.BLOG || {};
     B.post = function(json) {
         var self = this,
             isAuthor = function (tag) {
-                return _.contains(["steffenp", "magnuskiro", "teodoran"], tag);
+                return _.contains(["spohner", "magnuskiro", "_teodoran"], tag);
             };
 
         self.id = json._id || null;

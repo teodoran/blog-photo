@@ -35,7 +35,7 @@ ko.bindingHandlers.tag = {
         "use strict";
         var tag = ko.unwrap(valueAccessor());
 
-        if (_.contains(["steffenp", "magnuskiro", "teodoran"], tag)) {
+        if (_.contains(["spohner", "magnuskiro", "_teodoran"], tag)) {
             $(element).text("@" + tag + " ");
         } else{
             $(element).text("#" + tag + " ");            
