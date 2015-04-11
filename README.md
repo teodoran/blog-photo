@@ -1,6 +1,5 @@
 KodeKollektivet.no
 ==================
-[![npm dependecy tracker](https://david-dm.org/teodoran/kodekollektivet.png)](https://david-dm.org/teodoran/kodekollektivet)
 
 A blog site.
 
